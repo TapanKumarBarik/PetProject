@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { ApiService } from '../../../api/api.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { Note } from './note.model';
+
 @Component({
   selector: 'app-note',
   standalone: true,
@@ -10,31 +12,84 @@ import { CommonModule } from '@angular/common';
   styleUrl: './note.component.css',
 })
 export class NoteComponent {
-  notes: any[] = [];
+  notes: Note[] = [];
+  newNote: Note = {
+    id: 0,
+    title: '',
+    content: '',
+  };
+  isEditing: boolean = false;
+  editingNoteId: number | null = null;
 
   constructor(private apiService: ApiService) {}
 
   ngOnInit(): void {
-    this.getNotes();
+    this.loadNotes();
   }
 
-  getNotes(): void {
-    this.apiService.getNotes().subscribe((data: any[]) => {
+  // Fetch all notes
+  loadNotes() {
+    this.apiService.getNotes().subscribe((data: Note[]) => {
       this.notes = data;
     });
   }
 
-  createNote(): void {
-    // Note creation logic here
+  // Create a new note or update an existing one
+  saveNote() {
+    if (
+      this.newNote.title.trim() === '' ||
+      this.newNote.content.trim() === ''
+    ) {
+      alert('Title and content are required!');
+      return;
+    }
+
+    const noteToSend = {
+      title: this.newNote.title,
+      content: this.newNote.content,
+    };
+
+    if (this.isEditing && this.editingNoteId !== null) {
+      // Update the note
+      this.apiService
+        .updateNote(this.editingNoteId, noteToSend)
+        .subscribe(() => {
+          this.loadNotes(); // Reload notes after update
+          this.resetForm(); // Reset the form after update
+        });
+    } else {
+      // Create a new note
+      this.apiService.createNote(noteToSend).subscribe((note: Note) => {
+        this.notes.push(note);
+        this.resetForm(); // Reset the form after note creation
+      });
+    }
   }
 
-  editNote(note: any): void {
-    // Note editing logic here
+  // Delete a note
+  deleteNote(noteId: number) {
+    if (confirm('Are you sure you want to delete this note?')) {
+      this.apiService.deleteNote(noteId).subscribe(() => {
+        this.notes = this.notes.filter((note) => note.id !== noteId);
+      });
+    }
   }
 
-  deleteNote(noteId: number): void {
-    // this.apiService.deleteNote(noteId).subscribe(() => {
-    //   this.getNotes(); // Refresh note list after deletion
-    // });
+  // Set the form for editing a note
+  editNote(note: Note) {
+    this.isEditing = true;
+    this.editingNoteId = note.id!;
+    this.newNote = { ...note }; // Populate form with existing note data
+  }
+
+  // Reset form and state after saving or canceling
+  resetForm() {
+    this.newNote = {
+      id: 0,
+      title: '',
+      content: '',
+    };
+    this.isEditing = false;
+    this.editingNoteId = null;
   }
 }
