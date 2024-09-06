@@ -14,7 +14,7 @@ class NoteUpdate(NoteBase):
 
 class NoteOut(NoteBase):
     id: int
-    user_id: int
+    owner_id: int
     created_at: datetime
     updated_at: datetime
 

@@ -9,7 +9,7 @@ class TaskBase(BaseModel):
     description: str
     is_completed:bool=False
     completed_at: Optional[datetime]=None
-class TaskCreate(BaseModel):
+class TaskCreate(TaskBase):
     pass
 
 class TaskUpdate(BaseModel):
