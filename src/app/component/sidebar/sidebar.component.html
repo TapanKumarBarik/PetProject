@@ -1,6 +1,17 @@
-<div class="sidebar">
-  <ul>
-    <li><a href="/tasks">Tasks</a></li>
-    <li><a href="/notes">Notes</a></li>
-  </ul>
-</div>
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav mode="side" opened>
+    <mat-nav-list>
+      <mat-list-item (click)="navigate('/tasks')">
+        <mat-icon>task</mat-icon>
+        <span>Tasks</span>
+      </mat-list-item>
+      <mat-list-item (click)="navigate('/notes')">
+        <mat-icon>note</mat-icon>
+        <span>Notes</span>
+      </mat-list-item>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <!-- Main content goes here -->
+  </mat-sidenav-content>
+</mat-sidenav-container>

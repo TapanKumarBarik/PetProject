@@ -1,36 +1,45 @@
 <div class="register-container">
-  <h2>Register</h2>
-  <form (submit)="register()">
-    <div class="form-group">
-      <label for="email">Email</label>
-      <input
-        type="email"
-        id="email"
-        name="email"
-        [(ngModel)]="email"
-        required
-      />
-    </div>
-    <div class="form-group">
-      <label for="username">User Name</label>
-      <input
-        type="text"
-        id="username"
-        name="username"
-        [(ngModel)]="username"
-        required
-      />
-    </div>
-    <div class="form-group">
-      <label for="password">Password</label>
-      <input
-        type="password"
-        id="password"
-        name="password"
-        [(ngModel)]="password"
-        required
-      />
-    </div>
-    <button type="submit" class="register-btn">Register</button>
-  </form>
+  <mat-card class="register-card">
+    <mat-card-title>Register</mat-card-title>
+    <mat-card-content>
+      <form (ngSubmit)="register()">
+        <mat-form-field appearance="fill">
+          <mat-label>Email</mat-label>
+          <input
+            matInput
+            [(ngModel)]="email"
+            name="email"
+            type="email"
+            required
+          />
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>User Name</mat-label>
+          <input
+            matInput
+            [(ngModel)]="username"
+            name="username"
+            type="text"
+            required
+          />
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Password</mat-label>
+          <input
+            matInput
+            [(ngModel)]="password"
+            name="password"
+            type="password"
+            required
+          />
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" type="submit">
+          Register
+        </button>
+      </form>
+    </mat-card-content>
+  </mat-card>
 </div>

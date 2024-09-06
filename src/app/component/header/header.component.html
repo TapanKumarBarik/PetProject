@@ -1,10 +1,13 @@
-<nav class="navbar">
-  <a href="/" class="navbar-brand">Task & Note App</a>
-  <div class="navbar-links">
-    <a *ngIf="!isLoggedIn()" href="/login">Login</a>
-    <a *ngIf="!isLoggedIn()" href="/register">Register</a>
-    <a *ngIf="isLoggedIn()" href="/tasks">Tasks</a>
-    <a *ngIf="isLoggedIn()" href="/notes">Notes</a>
-    <a *ngIf="isLoggedIn()" href="#" (click)="logout()">Logout</a>
-  </div>
-</nav>
+<mat-toolbar color="primary">
+  <button mat-button [routerLink]="'/'">Task & Note App</button>
+  <span class="spacer"></span>
+  <ng-container *ngIf="!isLoggedIn()">
+    <button mat-button [routerLink]="'/login'">Login</button>
+    <button mat-button [routerLink]="'/register'">Register</button>
+  </ng-container>
+  <ng-container *ngIf="isLoggedIn()">
+    <button mat-button [routerLink]="'/tasks'">Tasks</button>
+    <button mat-button [routerLink]="'/notes'">Notes</button>
+    <button mat-button (click)="logout()">Logout</button>
+  </ng-container>
+</mat-toolbar>

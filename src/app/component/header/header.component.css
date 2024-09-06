@@ -1,0 +1,43 @@
+.mat-toolbar {
+  display: flex;
+  align-items: center;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+button {
+  margin-left: 16px;
+}
+
+mat-toolbar {
+  background-color: #3f51b5; /* Custom color */
+  color: white; /* Text color */
+}
+
+.mat-toolbar-row {
+  background-color: #3f51b5; /* Same custom color or different if needed */
+}
+
+/* Set the background color of the toolbar */
+mat-toolbar {
+  background-color: #3f51b5; /* Change to your desired background color */
+  color: white; /* Text color for toolbar items */
+}
+
+/* Ensure toolbar buttons have the same text color */
+mat-toolbar button {
+  color: white; /* Text color for buttons */
+}
+
+/* Optional: Additional styling for buttons if needed */
+button.mat-button {
+  background-color: transparent; /* Make the button background transparent */
+  border: none; /* Remove button border if desired */
+}
+
+/* Optional: Hover effects for buttons */
+button.mat-button:hover {
+  background-color: rgba(255, 255, 255, 0.2); /* Light hover effect */
+}

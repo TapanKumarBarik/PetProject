@@ -1,0 +1,23 @@
+/* Container styling */
+.sidenav-container {
+  height: 100vh; /* Full viewport height */
+}
+
+/* Sidebar styling */
+mat-sidenav {
+  width: 240px; /* Width of the sidebar */
+  background-color: #fff; /* Background color */
+  box-shadow: 4px 0 8px rgba(0, 0, 0, 0.1); /* Shadow effect */
+}
+
+mat-list-item {
+  cursor: pointer;
+}
+
+mat-list-item:hover {
+  background-color: #f1f1f1; /* Hover effect */
+}
+
+mat-icon {
+  margin-right: 16px; /* Spacing between icon and text */
+}

@@ -1,6 +1,41 @@
 <div class="home-container">
-  <h1>Welcome to the Task and Note Management App</h1>
-  <p>
-    This is a simple, user-friendly app to help you manage your tasks and notes.
-  </p>
+  <mat-card class="welcome-card">
+    <img
+      mat-card-image
+      src="https://via.placeholder.com/1200x500"
+      alt="Welcome Image"
+    />
+    <mat-card-header>
+      <mat-card-title
+        >Welcome to the Task and Note Management App</mat-card-title
+      >
+      <mat-card-subtitle>
+        Stay organized, manage your daily tasks, and jot down important notes
+        easily.
+      </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p>
+        This is a simple, user-friendly app to help you manage your tasks and
+        notes. Stay productive and never miss out on important things.
+      </p>
+      <div class="charts-container">
+        <div class="chart-item">
+          <canvas id="tasksChart"></canvas>
+        </div>
+        <div class="chart-item">
+          <canvas id="notesChart"></canvas>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <div class="action-buttons">
+    <button mat-raised-button color="primary" (click)="goToLogin()">
+      Login
+    </button>
+    <button mat-raised-button color="accent" (click)="goToRegister()">
+      Register
+    </button>
+  </div>
 </div>
