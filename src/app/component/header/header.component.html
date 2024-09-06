@@ -1,0 +1,10 @@
+<nav class="navbar">
+  <a href="/" class="navbar-brand">Task & Note App</a>
+  <div class="navbar-links">
+    <a *ngIf="!isLoggedIn()" href="/login">Login</a>
+    <a *ngIf="!isLoggedIn()" href="/register">Register</a>
+    <a *ngIf="isLoggedIn()" href="/tasks">Tasks</a>
+    <a *ngIf="isLoggedIn()" href="/notes">Notes</a>
+    <a *ngIf="isLoggedIn()" href="#" (click)="logout()">Logout</a>
+  </div>
+</nav>

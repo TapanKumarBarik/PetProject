@@ -1,0 +1,10 @@
+<div class="task-container">
+  <h2>Manage Tasks</h2>
+  <button (click)="createTask()">Create Task</button>
+
+  <div *ngFor="let task of tasks">
+    <p>{{ task.title }}</p>
+    <button (click)="editTask(task)">Edit</button>
+    <button (click)="deleteTask(task.id)">Delete</button>
+  </div>
+</div>
