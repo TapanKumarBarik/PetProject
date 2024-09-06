@@ -1,0 +1,71 @@
+<mat-card class="expense-tracker-card">
+  <mat-card-title>Daily Expense Tracker</mat-card-title>
+  <mat-card-content>
+    <form (ngSubmit)="addExpense()">
+      <mat-form-field appearance="fill">
+        <mat-label>Title</mat-label>
+        <input matInput [(ngModel)]="newExpense.title" name="title" required />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Amount</mat-label>
+        <input
+          matInput
+          type="number"
+          [(ngModel)]="newExpense.amount"
+          name="amount"
+          required
+        />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Category</mat-label>
+        <mat-select [(ngModel)]="newExpense.category" name="category">
+          <mat-option value="Food">Food</mat-option>
+          <mat-option value="Transport">Transport</mat-option>
+          <mat-option value="Entertainment">Entertainment</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Payment Method</mat-label>
+        <mat-select
+          [(ngModel)]="newExpense.payment_method"
+          name="payment_method"
+        >
+          <mat-option value="Cash">Cash</mat-option>
+          <mat-option value="Credit Card">Credit Card</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Date</mat-label>
+        <input
+          matInput
+          [matDatepicker]="picker"
+          [(ngModel)]="newExpense.date"
+          name="date"
+          required
+        />
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" type="submit">
+        Add Expense
+      </button>
+    </form>
+  </mat-card-content>
+</mat-card>
+
+<!-- Expense Breakdown by Category -->
+<mat-card>
+  <mat-card-title>Expense Breakdown by Category</mat-card-title>
+  <canvas id="categoryChart"></canvas>
+</mat-card>
+
+<!-- Daily Expenses Trend -->
+<mat-card>
+  <mat-card-title>Daily Expense Trend</mat-card-title>
+  <canvas id="dailyTrendChart"></canvas>
+</mat-card>
