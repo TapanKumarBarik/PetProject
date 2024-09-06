@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from app.api.v1.endpoints import users, tasks, notes, auth
+from app.api.v1.endpoints import users, tasks, notes, auth, secrets
 from app.db.base import Base
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -18,4 +18,5 @@ app.add_middleware(
 app.include_router(users.router, prefix="/users", tags=["users"])
 app.include_router(tasks.router, prefix="/tasks", tags=["tasks"])
 app.include_router(notes.router, prefix="/notes", tags=["notes"])
+app.include_router(secrets.router, prefix="/secrets", tags=["secrets"])
 app.include_router(auth.router, prefix="/api/v1/auth", tags=["auth"])

@@ -17,4 +17,6 @@ class User(Base):
 
     # Add the relationship to tasks
     tasks = relationship("Task", back_populates="owner")  # Assuming Task has a corresponding "owner" relationship
-    notes = relationship("Note", back_populates="user")  # Relationship with the notes table
+    notes = relationship("Note", back_populates="user")
+    secrets = relationship("Secret", back_populates="owner")
+    # Relationship with the notes table
