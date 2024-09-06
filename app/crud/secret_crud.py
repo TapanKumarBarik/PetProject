@@ -10,10 +10,10 @@ def row_to_secret(row):
         key_details=row[2],
         password=row[3],
         password_visible=row[4],
-        owner_id=row[6],
-        created_date=row[7],
-        updated_date=row[8],
-        is_deleted=row[9]
+        owner_id=row[5],
+        created_date=row[6],
+        updated_date=row[7],
+        is_deleted=row[8]
     )
 
 def get_secret_by_id(secret_id: str):
