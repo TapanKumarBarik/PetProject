@@ -83,4 +83,47 @@ export class ApiService {
     });
     return this.http.delete<Note>(`${this.apiNotesUrl}/${noteId}`, { headers });
   }
+
+  ///////////
+  private baseUrl_secrect = 'http://127.0.0.1:8000/secrets';
+
+  // Helper function to get headers with Authorization token
+  private getAuthHeaders(): HttpHeaders {
+    const token = localStorage.getItem('access_token');
+    return new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+    });
+  }
+
+  // Create a new secret
+  createSecret(secret: any): Observable<any> {
+    const headers = this.getAuthHeaders();
+    return this.http.post(`${this.baseUrl_secrect}/`, secret, { headers });
+  }
+
+  // Get all secrets
+  getSecrets(): Observable<any[]> {
+    const headers = this.getAuthHeaders();
+    return this.http.get<any[]>(`${this.baseUrl_secrect}/`, { headers });
+  }
+
+  // Get a single secret by ID
+  getSecretById(secretId: number): Observable<any> {
+    const headers = this.getAuthHeaders();
+    return this.http.get(`${this.baseUrl_secrect}/${secretId}`, { headers });
+  }
+
+  // Update a secret by ID
+  updateSecret(secretId: number, secret: any): Observable<any> {
+    const headers = this.getAuthHeaders();
+    return this.http.put(`${this.baseUrl_secrect}/${secretId}`, secret, {
+      headers,
+    });
+  }
+
+  // Delete a secret by ID
+  deleteSecret(secretId: number): Observable<any> {
+    const headers = this.getAuthHeaders();
+    return this.http.delete(`${this.baseUrl_secrect}/${secretId}`, { headers });
+  }
 }

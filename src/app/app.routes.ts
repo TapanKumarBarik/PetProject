@@ -5,6 +5,7 @@ import { TaskComponent } from './pages/task/task.component';
 import { NoteComponent } from './pages/note/note.component';
 import { AuthGuard } from './guards/auth.guard';
 import { HomeComponent } from './component/home/home.component';
+import { SecretsComponent } from './component/secrets/secrets.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -12,4 +13,5 @@ export const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'tasks', component: TaskComponent, canActivate: [AuthGuard] },
   { path: 'notes', component: NoteComponent, canActivate: [AuthGuard] },
+  { path: 'key-vault', component: SecretsComponent, canActivate: [AuthGuard] },
 ];
