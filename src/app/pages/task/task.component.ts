@@ -3,12 +3,32 @@ import { ApiService } from '../../../api/api.service';
 import { Task } from './task.model';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+
+import { MatIconModule } from '@angular/material/icon';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatDividerModule } from '@angular/material/divider';
+
+import { MatCardModule } from '@angular/material/card';
+
 @Component({
   standalone: true,
   selector: 'app-tasks',
   templateUrl: './task.component.html',
   styleUrls: ['./task.component.css'],
-  imports: [CommonModule, FormsModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    MatIconModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    MatCheckboxModule,
+    MatDividerModule,
+    MatCardModule,
+  ],
 })
 export class TaskComponent implements OnInit {
   tasks: Task[] = [];

@@ -1,32 +1,55 @@
-<div>
+<div class="note-container">
   <h2>Note List</h2>
-  <ul>
-    <li *ngFor="let note of notes">
-      <strong>{{ note.title }}</strong> - {{ note.content }}
-      <button (click)="editNote(note)">Edit</button>
-      <button (click)="deleteNote(note.id)">Delete</button>
-    </li>
-  </ul>
+  <div class="note-grid">
+    <div *ngFor="let note of notes" class="note-card">
+      <h3>{{ note.title }}</h3>
+      <pre class="note-content">{{ note.content }}</pre>
+      <div class="note-actions">
+        <button mat-raised-button color="primary" (click)="editNote(note)">
+          Edit
+        </button>
+        <button mat-raised-button color="warn" (click)="deleteNote(note.id)">
+          Delete
+        </button>
+      </div>
+    </div>
+  </div>
 
-  <h3 *ngIf="isEditing">Edit Note</h3>
-  <h3 *ngIf="!isEditing">Create New Note</h3>
+  <div class="note-form">
+    <h3 *ngIf="isEditing">Edit Note</h3>
+    <h3 *ngIf="!isEditing">Create New Note</h3>
 
-  <form (ngSubmit)="saveNote()">
-    <input
-      [(ngModel)]="newNote.title"
-      name="title"
-      placeholder="Note Title"
-      required
-    />
-    <textarea
-      [(ngModel)]="newNote.content"
-      name="content"
-      placeholder="Note Content"
-      required
-    ></textarea>
-    <button type="submit">
-      {{ isEditing ? "Update Note" : "Create Note" }}
-    </button>
-    <button type="button" (click)="resetForm()">Cancel</button>
-  </form>
+    <form (ngSubmit)="saveNote()">
+      <input
+        matInput
+        [(ngModel)]="newNote.title"
+        name="title"
+        placeholder="Note Title"
+        class="note-title-input"
+        required
+      />
+      <textarea
+        matInput
+        [(ngModel)]="newNote.content"
+        name="content"
+        placeholder="Write your note here..."
+        rows="10"
+        class="notepad"
+        required
+      ></textarea>
+      <div class="form-actions">
+        <button mat-raised-button color="primary" type="submit">
+          {{ isEditing ? "Update Note" : "Create Note" }}
+        </button>
+        <button
+          mat-raised-button
+          color="accent"
+          type="button"
+          (click)="resetForm()"
+        >
+          Cancel
+        </button>
+      </div>
+    </form>
+  </div>
 </div>
