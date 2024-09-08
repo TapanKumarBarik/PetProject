@@ -1,0 +1,58 @@
+<!-- rich-text-editor.component.html -->
+<div class="toolbar">
+  <!-- Font Family -->
+  <select (change)="setFontFamily($event)" title="Font Family">
+    <option value="Arial">Arial</option>
+    <option value="Courier New">Courier New</option>
+    <option value="Georgia">Georgia</option>
+    <option value="Times New Roman">Times New Roman</option>
+    <option value="Verdana">Verdana</option>
+  </select>
+
+  <!-- Font Size -->
+  <select (change)="setFontSize($event)" title="Font Size">
+    <option value="1">Small</option>
+    <option value="3">Normal</option>
+    <option value="5">Large</option>
+  </select>
+
+  <!-- Example toolbar buttons for bold, italic, and underline -->
+  <button id="bold-btn" (click)="format('bold')" title="Bold"><b>B</b></button>
+  <button id="italic-btn" (click)="format('italic')" title="Italic">
+    <i>I</i>
+  </button>
+  <button id="underline-btn" (click)="format('underline')" title="Underline">
+    <u>U</u>
+  </button>
+
+  <!-- Text Color -->
+  <input type="color" (change)="setTextColor($event)" title="Text Color" />
+
+  <!-- Text Alignment -->
+  <button (click)="format('justifyLeft')" title="Align Left">&#x2190;</button>
+  <button (click)="format('justifyCenter')" title="Center Align">
+    &#x2194;
+  </button>
+  <button (click)="format('justifyRight')" title="Align Right">&#x2192;</button>
+  <button (click)="format('justifyFull')" title="Justify">&#x21E4;</button>
+
+  <!-- Bullet List -->
+  <button (click)="format('insertUnorderedList')" title="Bullet List">
+    &#x2022;
+  </button>
+  <button (click)="format('insertOrderedList')" title="Numbered List">
+    1.
+  </button>
+
+  <!-- Add Image -->
+  <button (click)="insertImage()" title="Insert Image">&#x1F5BC;</button>
+</div>
+
+<div
+  class="editor"
+  contenteditable="true"
+  (input)="onInput()"
+  [(innerHTML)]="content"
+>
+  Start typing or formatting...
+</div>

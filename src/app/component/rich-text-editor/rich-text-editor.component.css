@@ -1,0 +1,60 @@
+/* rich-text-editor.component.css */
+.toolbar {
+  background-color: #f0f0f0;
+  padding: 8px;
+  border-bottom: 2px solid #ddd;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+select,
+button,
+input[type="color"] {
+  padding: 5px;
+  margin-right: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: #fff;
+}
+
+button {
+  font-size: 14px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+button:hover {
+  background-color: #e1e1e1;
+}
+
+.editor {
+  min-height: 400px;
+  padding: 15px;
+  margin-top: 10px;
+  border: 1px solid #ccc;
+  font-family: Arial, sans-serif;
+  background-color: #fff;
+  overflow-y: auto;
+  white-space: pre-wrap;
+  line-height: 1.5;
+  outline: none;
+}
+
+.editor:empty:before {
+  content: "Start typing or formatting...";
+  color: #aaa;
+}
+button.active {
+  background-color: #d3d3d3;
+  border: 1px solid #007bff;
+}
+button:hover {
+  background-color: #e1e1e1;
+  border: 1px solid #007bff;
+}
