@@ -9,3 +9,4 @@ pydantic[email]
 python-multipart
 sqlalchemy
 passlib[bcrypt]
+azure-storage-blob

@@ -1,9 +1,12 @@
+import os
+
 import pyodbc
 from contextlib import contextmanager
 
-from app.core.config import settings
+from dotenv import load_dotenv
 
-DATABASE_URL = settings.ODBC_CONNECTION_STRING
+load_dotenv()
+DATABASE_URL = os.getenv("DATABASE_URL")
 
 @contextmanager
 def get_db():
